@@ -29,13 +29,8 @@ class MengenlehreclockConverter {
         let components = Calendar.current.dateComponents([.minute], from: time)
         
         if let minutes = components.minute {
-            
-            if minutes == 0 ||  minutes > NUMBER_OF_FIVE_MINUTES_ROW_LAMPS * SIZE_OF_MINUTE_BLOCKS {
-                return -1
-            }
-            else
-            {
-                return minutes / SIZE_OF_MINUTE_BLOCKS
+            if minutes > 0 {
+                return (minutes % SIZE_OF_MINUTE_BLOCKS) - 1
             }
         }
 
@@ -47,13 +42,8 @@ class MengenlehreclockConverter {
         let components = Calendar.current.dateComponents([.minute], from: time)
 
         if let minutes = components.minute {
-            
-            if minutes == 0 ||  minutes <= NUMBER_OF_FIVE_MINUTES_ROW_LAMPS * SIZE_OF_MINUTE_BLOCKS {
-                return -1
-            }
-            else
-            {
-                return minutes - NUMBER_OF_FIVE_MINUTES_ROW_LAMPS * SIZE_OF_MINUTE_BLOCKS - 1
+            if minutes > 0 {
+                return (minutes / SIZE_OF_MINUTE_BLOCKS) - 1
             }
         }
         

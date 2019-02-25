@@ -155,18 +155,23 @@ class MengenlehreclockTests: XCTestCase {
         formatter = nil
     }
 
-//    func testSingleMinutesRow() {
-//        XCTAssertTrue(converter.isRunning)
-//        XCTAssertEqual(converter.singleMinutesRowFor(time:dateForMidnight), -1)
-//        XCTAssertEqual(converter.singleMinutesRowFor(time:dateForEightFiftyFourFiftyNine), 10)
-//    }
-//
-//    func testFiveMinutesRow() {
-//        XCTAssertTrue(converter.isRunning)
-//        XCTAssertEqual(converter.fiveMinutesRow(time:dateForMidnight), -1)
-//        XCTAssertEqual(converter.fiveMinutesRow(time:dateForEightFiftyFourFiftyNine), -1)
-//        XCTAssertEqual(converter.fiveMinutesRow(time:dateForTwentyThreeFiftyNineFiftyNine), 3)
-//    }
+    func testSingleMinutesRow() {
+        XCTAssertTrue(converter.isRunning)
+        XCTAssertEqual(converter.singleMinutesRowFor(time:dateFor_00_00_00), -1)
+        XCTAssertEqual(converter.singleMinutesRowFor(time:dateFor_01_01_01), 0)
+        XCTAssertEqual(converter.singleMinutesRowFor(time:dateFor_02_02_02), 1)
+        XCTAssertEqual(converter.singleMinutesRowFor(time:dateFor_03_03_03), 2)
+        XCTAssertEqual(converter.singleMinutesRowFor(time:dateFor_04_04_04), 3)
+    }
+
+    func testFiveMinutesRow() {
+        XCTAssertTrue(converter.isRunning)
+        XCTAssertEqual(converter.fiveMinutesRow(time:dateFor_00_00_00), -1)
+        XCTAssertEqual(converter.fiveMinutesRow(time:dateFor_15_15_15), 2)
+        XCTAssertEqual(converter.fiveMinutesRow(time:dateFor_23_45_45), 8)
+        XCTAssertEqual(converter.fiveMinutesRow(time:dateFor_23_50_50), 9)
+        XCTAssertEqual(converter.fiveMinutesRow(time:dateFor_23_55_55), 10)
+    }
     
     func testSingleHoursRow() {
         XCTAssertTrue(converter.isRunning)
