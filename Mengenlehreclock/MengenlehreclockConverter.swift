@@ -24,6 +24,16 @@ class MengenlehreclockConverter {
         isRunning = false
     }
     
+    func secondsLampFor(time:Date) -> Bool {
+        let components = Calendar.current.dateComponents([.second], from: time)
+        
+        if let seconds = components.second {
+            return (seconds % 2) == 0
+        }
+        
+        return false
+    }
+    
     func singleMinutesRowFor(time:Date) -> Int {
         
         let components = Calendar.current.dateComponents([.minute], from: time)

@@ -154,6 +154,14 @@ class MengenlehreclockTests: XCTestCase {
         converter = nil
         formatter = nil
     }
+    
+    func testSecondsLamp() {
+        XCTAssertTrue(converter.isRunning)
+        XCTAssertTrue(converter.secondsLampFor(time:dateFor_00_00_00))
+        XCTAssertFalse(converter.secondsLampFor(time:dateFor_01_01_01))
+        XCTAssertTrue(converter.secondsLampFor(time:dateFor_02_02_02))
+        XCTAssertFalse(converter.secondsLampFor(time:dateFor_03_03_03))
+    }
 
     func testSingleMinutesRow() {
         XCTAssertTrue(converter.isRunning)
