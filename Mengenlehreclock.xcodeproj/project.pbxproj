@@ -13,6 +13,8 @@
 		5E9758C0221FEB3200874CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E9758BF221FEB3200874CC2 /* Assets.xcassets */; };
 		5E9758C3221FEB3200874CC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E9758C1221FEB3200874CC2 /* LaunchScreen.storyboard */; };
 		5E9758CE221FEB3200874CC2 /* MengenlehreclockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9758CD221FEB3200874CC2 /* MengenlehreclockTests.swift */; };
+		5E9CF6422223E83F0000B1E2 /* MengenlehreclockConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9CF6412223E83F0000B1E2 /* MengenlehreclockConverterView.swift */; };
+		5E9CF6442223EBE40000B1E2 /* MengenlehreclockUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */; };
 		5EE7EDF2221FEC4D000580E4 /* ReadMe.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7EDF1221FEC4D000580E4 /* ReadMe.rtfd */; };
 		5EE7EDF4221FEE51000580E4 /* MengenlehreclockConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		5E9758C9221FEB3200874CC2 /* MengenlehreclockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MengenlehreclockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9758CD221FEB3200874CC2 /* MengenlehreclockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockTests.swift; sourceTree = "<group>"; };
 		5E9758CF221FEB3200874CC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E9CF6412223E83F0000B1E2 /* MengenlehreclockConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockConverterView.swift; sourceTree = "<group>"; };
+		5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockUpdatable.swift; sourceTree = "<group>"; };
 		5EE7EDF1221FEC4D000580E4 /* ReadMe.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ReadMe.rtfd; sourceTree = "<group>"; };
 		5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 		5E9758B7221FEB3100874CC2 /* Mengenlehreclock */ = {
 			isa = PBXGroup;
 			children = (
+				5E9CF6402223E7970000B1E2 /* Components */,
 				5E9758B8221FEB3100874CC2 /* AppDelegate.swift */,
 				5E9758BA221FEB3100874CC2 /* ViewController.swift */,
 				5E9758BC221FEB3100874CC2 /* Main.storyboard */,
@@ -89,6 +94,7 @@
 				5E9758C1221FEB3200874CC2 /* LaunchScreen.storyboard */,
 				5E9758C4221FEB3200874CC2 /* Info.plist */,
 				5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */,
+				5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */,
 			);
 			path = Mengenlehreclock;
 			sourceTree = "<group>";
@@ -100,6 +106,14 @@
 				5E9758CF221FEB3200874CC2 /* Info.plist */,
 			);
 			path = MengenlehreclockTests;
+			sourceTree = "<group>";
+		};
+		5E9CF6402223E7970000B1E2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5E9CF6412223E83F0000B1E2 /* MengenlehreclockConverterView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +221,8 @@
 				5E9758BB221FEB3100874CC2 /* ViewController.swift in Sources */,
 				5E9758B9221FEB3100874CC2 /* AppDelegate.swift in Sources */,
 				5EE7EDF4221FEE51000580E4 /* MengenlehreclockConverter.swift in Sources */,
+				5E9CF6442223EBE40000B1E2 /* MengenlehreclockUpdatable.swift in Sources */,
+				5E9CF6422223E83F0000B1E2 /* MengenlehreclockConverterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

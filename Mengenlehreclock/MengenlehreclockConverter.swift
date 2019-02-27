@@ -10,9 +10,7 @@ import Foundation
 
 class MengenlehreclockConverter {
     
-    private let NUMBER_OF_FIVE_MINUTES_ROW_LAMPS = 11
     private let SIZE_OF_MINUTE_BLOCKS:Int = 5
-    private let NUMBER_OF_FIVE_HOUR_ROW_LAMPS = 4
     private let SIZE_OF_HOUR_BLOCKS:Int = 5
     var isRunning:Bool!
     
