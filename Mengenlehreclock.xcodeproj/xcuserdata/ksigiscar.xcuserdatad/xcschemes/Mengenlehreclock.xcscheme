@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5E9758B4221FEB3100874CC2"
+               BuildableName = "Mengenlehreclock.app"
+               BlueprintName = "Mengenlehreclock"
+               ReferencedContainer = "container:Mengenlehreclock.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5E9758B4221FEB3100874CC2"
+            BuildableName = "Mengenlehreclock.app"
+            BlueprintName = "Mengenlehreclock"
+            ReferencedContainer = "container:Mengenlehreclock.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+</Scheme>

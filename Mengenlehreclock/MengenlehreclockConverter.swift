@@ -10,16 +10,31 @@ import Foundation
 
 class MengenlehreclockConverter {
     
+    public static let MengenlehreclockTimeTick = NSNotification.Name(rawValue: "MengenlehreclockTimeTick")
+    public var isRunning:Bool!
+    
     private let SIZE_OF_MINUTE_BLOCKS:Int = 5
     private let SIZE_OF_HOUR_BLOCKS:Int = 5
-    var isRunning:Bool!
+    
+    private var timer:Timer!
+    private var timeInterval:TimeInterval!
+    
     
     func start() {
         isRunning = true
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { time in
+            NotificationCenter.default.post(name: MengenlehreclockConverter.MengenlehreclockTimeTick, object: self, userInfo: ["date":Date()])
+        })
     }
     
     func stop() {
         isRunning = false
+        timer.invalidate()
+    }
+    
+    init() {
+        timeInterval = TimeInterval(1) // every second
     }
     
     func secondsLampFor(time:Date) -> Bool {

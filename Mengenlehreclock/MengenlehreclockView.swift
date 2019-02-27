@@ -1,5 +1,5 @@
 //
-//  MengenlehreclockConverterView.swift
+//  MengenlehreclockView.swift
 //  Mengenlehreclock
 //
 //  Created by Karl Sigiscar on 25/02/2019.
@@ -8,24 +8,19 @@
 
 import UIKit
 
-@IBDesignable
-class MengenlehreclockConverterView: UIView, MengenlehreclockUpdatable {
+class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     
-    @IBInspectable
-    private var borderColor:UIColor! = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    private var borderStartColor:UIColor! = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+    private var borderEndColor:UIColor! = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
+    private var minutesStartColor:UIColor! = UIColor(red: 0.6, green: 0.4, blue: 0, alpha: 1)
+    private var minutesEndColor:UIColor! = UIColor(red: 0.5, green: 0.3, blue: 0, alpha: 1)
+    private var minutesHighlightedStartColor:UIColor! = UIColor(red: 1.0, green: 0.8, blue: 0, alpha: 1)
+    private var minutesHighlightedEndColor:UIColor! = UIColor(red: 0.8, green: 0.6, blue: 0, alpha: 1)
+    private var hoursStartColor:UIColor! = UIColor(red: 0.6, green: 0.3, blue: 0.0, alpha: 1)
+    private var hoursEndColor:UIColor! = UIColor(red: 0.8, green: 0.4, blue: 0.1, alpha: 1)
+    private var hoursHighlightedStartColor:UIColor! = UIColor(red: 0.8, green: 0.4, blue: 0.1, alpha: 1)
+    private var hoursHighlightedEndColor:UIColor! =  UIColor(red: 1, green: 0.5, blue: 0.2, alpha: 1)
 
-    @IBInspectable
-    private var minutesColor:UIColor! = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1)
-    
-    @IBInspectable
-    private var minutesColorHighlighted:UIColor! = UIColor.yellow
-    
-    @IBInspectable
-    private var hoursColor:UIColor! = UIColor(red: 1, green: 0.5, blue: 0, alpha: 1)
-    
-    @IBInspectable
-    private var hoursColorHighlighted:UIColor! = UIColor.orange
-    
     var isSecondsLampOn:Bool!
     var minutesRowIndex:Int!
     var singleMinutesRowIndex:Int!
@@ -72,30 +67,38 @@ class MengenlehreclockConverterView: UIView, MengenlehreclockUpdatable {
         drawFiveMinutesRow(in: context)
         drawSingleMinutesRow(in: context)
         drawSeparators(in: context)
+        
+        super.draw(rect)
     }
     
     func drawCircle(in context: CGContext) {
         let RADIUS:CGFloat = 100
-        let BORDER_THICKNESS:CGFloat = 10
         
-        let strokeRect = CGRect(x: centerX - RADIUS / 2 - BORDER_THICKNESS / 2,
-                                y: RADIUS / 2 - BORDER_THICKNESS / 2,
-                                width: RADIUS + BORDER_THICKNESS,
-                                height: RADIUS + BORDER_THICKNESS)
+        var colors:[CGColor]
+    
+        guard isSecondsLampOn != nil  else {
+            return
+        }
         
-        context.setStrokeColor(borderColor.cgColor)
-        context.setLineWidth(BORDER_THICKNESS)
-        context.addEllipse(in: strokeRect)
-        context.drawPath(using: .stroke)
+        if isSecondsLampOn {
+            colors = [minutesHighlightedStartColor.cgColor, minutesHighlightedEndColor.cgColor]
+        }
+        else
+        {
+            colors = [minutesStartColor.cgColor, minutesEndColor.cgColor]
+        }
         
-        let fillRect = CGRect(x: centerX - RADIUS / 2,
-                              y: RADIUS / 2,
-                              width: RADIUS,
-                              height: RADIUS)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colorLocations: [CGFloat] = [0.0, 1.0]
+
+        let gradient = CGGradient(colorsSpace: colorSpace,
+                                  colors: colors as CFArray,
+                                  locations: colorLocations)!
+
+        let startPoint = CGPoint(x: centerX, y: RADIUS + RADIUS / 2)
+        let endPoint = CGPoint(x: centerX, y: RADIUS + RADIUS / 2)
         
-        context.setFillColor(minutesColor.cgColor)
-        context.addEllipse(in: fillRect)
-        context.drawPath(using: .fill)
+        context.drawRadialGradient(gradient, startCenter: startPoint, startRadius: 0, endCenter: endPoint, endRadius: RADIUS, options: [])
     }
     
     private func drawSecondsLamp(in context:CGContext) {
