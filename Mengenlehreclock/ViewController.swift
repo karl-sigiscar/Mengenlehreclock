@@ -3,7 +3,7 @@
 //  Mengenlehreclock
 //
 //  Created by Karl Sigiscar on 22/02/2019.
-//  Copyright © 2019 ObjectMentor. All rights reserved.
+//  Copyright © 2019 Karl Sigiscar. All rights reserved.
 //
 
 import UIKit
@@ -17,11 +17,6 @@ class ViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         viewModel = ViewModel(withDelegate: self)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 }
 

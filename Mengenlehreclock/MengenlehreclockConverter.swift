@@ -3,7 +3,7 @@
 //  Mengenlehreclock
 //
 //  Created by Karl Sigiscar on 22/02/2019.
-//  Copyright © 2019 ObjectMentor. All rights reserved.
+//  Copyright © 2019 Karl Sigiscar. All rights reserved.
 //
 
 import Foundation

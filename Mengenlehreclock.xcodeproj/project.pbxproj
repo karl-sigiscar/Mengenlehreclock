@@ -89,15 +89,15 @@
 			isa = PBXGroup;
 			children = (
 				5E9758B8221FEB3100874CC2 /* AppDelegate.swift */,
+				5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */,
+				5E9CF6412223E83F0000B1E2 /* MengenlehreclockView.swift */,
+				5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */,
 				5E9758BA221FEB3100874CC2 /* ViewController.swift */,
 				5E9BA63F2226DD8A00386ECB /* ViewModel.swift */,
 				5E9758BC221FEB3100874CC2 /* Main.storyboard */,
 				5E9758BF221FEB3200874CC2 /* Assets.xcassets */,
 				5E9758C1221FEB3200874CC2 /* LaunchScreen.storyboard */,
 				5E9758C4221FEB3200874CC2 /* Info.plist */,
-				5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */,
-				5E9CF6412223E83F0000B1E2 /* MengenlehreclockView.swift */,
-				5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */,
 			);
 			path = Mengenlehreclock;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.objectmentor.Mengenlehreclock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karlsigiscar.Mengenlehreclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,7 +403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.objectmentor.Mengenlehreclock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karlsigiscar.Mengenlehreclock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -422,7 +422,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.objectmentor.MengenlehreclockTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karlsigiscar.MengenlehreclockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,7 +442,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.objectmentor.MengenlehreclockTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karlsigiscar.MengenlehreclockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
