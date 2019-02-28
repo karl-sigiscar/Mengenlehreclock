@@ -10,6 +10,8 @@ import UIKit
 
 class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     
+    private var GAP:CGFloat = 10
+    
     private var borderStartColor:UIColor! = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     private var borderEndColor:UIColor! = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
     private var minutesStartColor:UIColor! = UIColor(red: 0.6, green: 0.4, blue: 0, alpha: 1)
@@ -20,6 +22,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     private var hoursEndColor:UIColor! = UIColor(red: 0.8, green: 0.4, blue: 0.1, alpha: 1)
     private var hoursHighlightedStartColor:UIColor! = UIColor(red: 0.8, green: 0.4, blue: 0.1, alpha: 1)
     private var hoursHighlightedEndColor:UIColor! =  UIColor(red: 1, green: 0.5, blue: 0.2, alpha: 1)
+    private var separatorColor:UIColor! = UIColor.black
 
     var isSecondsLampOn:Bool!
     var minutesRowIndex:Int!
@@ -59,8 +62,10 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         }
         
         context.clear(rect)
+        
         centerX = rect.width / 2
         centerY = rect.height / 2
+        
         drawSecondsLamp(in: context)
         drawFiveHoursRow(in: context)
         drawSingleHoursRow(in: context)
@@ -71,9 +76,9 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         super.draw(rect)
     }
     
-    func drawCircle(in context: CGContext) {
-        let RADIUS:CGFloat = 100
+    private func drawSecondsLamp(in context:CGContext) {
         
+        let RADIUS:CGFloat = bounds.width / 4
         var colors:[CGColor]
     
         guard isSecondsLampOn != nil  else {
@@ -83,8 +88,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         if isSecondsLampOn {
             colors = [minutesHighlightedStartColor.cgColor, minutesHighlightedEndColor.cgColor]
         }
-        else
-        {
+        else {
             colors = [minutesStartColor.cgColor, minutesEndColor.cgColor]
         }
         
@@ -101,20 +105,58 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         context.drawRadialGradient(gradient, startCenter: startPoint, startRadius: 0, endCenter: endPoint, endRadius: RADIUS, options: [])
     }
     
-    private func drawSecondsLamp(in context:CGContext) {
-        drawCircle(in: context)
+    
+    private func drawFiveHoursRow(in context:CGContext) {
+        
+        let RADIUS:CGFloat = bounds.width / 4
+        let WIDTH:CGFloat = ((bounds.width - (GAP * 5)) / 4)
+        let HEIGHT:CGFloat = bounds.height / 12
+        
+        var colors:[CGColor]
+
+        guard fiveHoursRowIndex != nil  else {
+            return
+        }
+
+        for i in 0...3 {
+            
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let colorLocations: [CGFloat] = [0.0, 1.0]
+            
+            let gradient:CGGradient
+            
+            // Highlight
+            
+            colors = [hoursHighlightedStartColor.cgColor, hoursHighlightedEndColor.cgColor]
+            gradient = CGGradient(colorsSpace: colorSpace,
+                                  colors: colors as CFArray,
+                                  locations: colorLocations)!
+        
+            let rect = CGRect(x: GAP + CGFloat(i) * (WIDTH + GAP), y: RADIUS * 2 + GAP * 2, width: WIDTH, height: HEIGHT)
+            let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 10)
+        
+            if i <= fiveHoursRowIndex {
+                context.setFillColor(UIColor.red.cgColor)
+            }
+            else {
+                context.setFillColor(UIColor.brown.cgColor)
+            }
+            
+            path.fill()
+                
+//                let startPoint = CGPoint(x: CGFloat(i) * WIDTH, y: RADIUS * 2 + GAP)
+//                let endPoint = CGPoint(x: CGFloat(i) * WIDTH, y: RADIUS * 2 + GAP + HEIGHT)
+//                context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
+        }
     }
     
+    private func drawSingleHoursRow(in context:CGContext) {
+    }
+
     private func drawFiveMinutesRow(in context:CGContext) {
     }
     
     private func drawSingleMinutesRow(in context:CGContext) {
-    }
-    
-    private func drawFiveHoursRow(in context:CGContext) {
-    }
-    
-    private func drawSingleHoursRow(in context:CGContext) {
     }
     
     private func drawSeparators(in context:CGContext) {
