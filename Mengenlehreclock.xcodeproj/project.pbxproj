@@ -16,7 +16,6 @@
 		5E9BA6402226DD8A00386ECB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9BA63F2226DD8A00386ECB /* ViewModel.swift */; };
 		5E9CF6422223E83F0000B1E2 /* MengenlehreclockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9CF6412223E83F0000B1E2 /* MengenlehreclockView.swift */; };
 		5E9CF6442223EBE40000B1E2 /* MengenlehreclockUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */; };
-		5EE7EDF2221FEC4D000580E4 /* ReadMe.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7EDF1221FEC4D000580E4 /* ReadMe.rtfd */; };
 		5EE7EDF4221FEE51000580E4 /* MengenlehreclockConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		5E9BA63F2226DD8A00386ECB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E9CF6412223E83F0000B1E2 /* MengenlehreclockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockView.swift; sourceTree = "<group>"; };
 		5E9CF6432223EBE40000B1E2 /* MengenlehreclockUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockUpdatable.swift; sourceTree = "<group>"; };
-		5EE7EDF1221FEC4D000580E4 /* ReadMe.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ReadMe.rtfd; sourceTree = "<group>"; };
 		5EE7EDF3221FEE51000580E4 /* MengenlehreclockConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengenlehreclockConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 		5E9758AC221FEB3100874CC2 = {
 			isa = PBXGroup;
 			children = (
-				5EE7EDF1221FEC4D000580E4 /* ReadMe.rtfd */,
 				5E9758B7221FEB3100874CC2 /* Mengenlehreclock */,
 				5E9758CC221FEB3200874CC2 /* MengenlehreclockTests */,
 				5E9758B6221FEB3100874CC2 /* Products */,
@@ -194,7 +191,6 @@
 			files = (
 				5E9758C3221FEB3200874CC2 /* LaunchScreen.storyboard in Resources */,
 				5E9758C0221FEB3200874CC2 /* Assets.xcassets in Resources */,
-				5EE7EDF2221FEC4D000580E4 /* ReadMe.rtfd in Resources */,
 				5E9758BE221FEB3100874CC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
