@@ -115,7 +115,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         for i in 0..<numberOfChips {
 
             let rect = CGRect(x: outerGap + CGFloat(i) * (width + innerGap), y: y, width: width, height: height)
-            let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 10)
+            let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 6)
 
             if i <= index {
                 context.setFillColor(highlightColor)
