@@ -30,7 +30,6 @@ class MengenlehreclockTests: XCTestCase {
     var dateFor_23_59_59:Date!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         
         converter = MengenlehreclockConverter()
         converter.start()
@@ -52,7 +51,6 @@ class MengenlehreclockTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         
         converter.stop()
         converter = nil
