@@ -16,7 +16,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     private var borderEndColor:UIColor! = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
     private var minutesStartColor:UIColor! = UIColor(red: 0.6, green: 0.4, blue: 0, alpha: 1)
     private var minutesEndColor:UIColor! = UIColor(red: 0.5, green: 0.3, blue: 0, alpha: 1)
-    private var minutesHighlightedStartColor:UIColor! = UIColor(red: 1.0, green: 0.8, blue: 0, alpha: 1)
+    private var minutesHighlightedStartColor:UIColor! = UIColor.yellow
     private var minutesHighlightedEndColor:UIColor! = UIColor(red: 0.8, green: 0.6, blue: 0, alpha: 1)
     private var hoursStartColor:UIColor! = UIColor(red: 0.6, green: 0.3, blue: 0.0, alpha: 1)
     private var hoursEndColor:UIColor! = UIColor(red: 0.8, green: 0.4, blue: 0.1, alpha: 1)
