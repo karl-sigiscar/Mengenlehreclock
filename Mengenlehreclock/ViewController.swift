@@ -24,13 +24,13 @@ extension ViewController : ViewModelDelegate {
     func converter(_ converter: MengenlehreclockConverter, didTickWithTime time: Date) {
         
         let isSecondsLampOn = converter.secondsLampFor(time: time)
-        let minutesRowIndex = converter.fiveMinutesRow(time: time)
+        let fiveMinutesRowIndex = converter.fiveMinutesRow(time: time)
         let singleMinutesRowIndex = converter.singleMinutesRowFor(time: time)
         let fiveHoursRowIndex = converter.fiveHoursRow(time: time)
         let singleHoursRowIndex = converter.singleHoursRow(time: time)
         
         mengerlehreclockView.updateClockWith(isSecondsLampOn: isSecondsLampOn,
-                                             minutesRowIndex: minutesRowIndex,
+                                             fiveMinutesRowIndex: fiveMinutesRowIndex,
                                              singleMinutesRowIndex: singleMinutesRowIndex,
                                              fiveHoursRowIndex: fiveHoursRowIndex,
                                              singleHoursRowIndex: singleHoursRowIndex)

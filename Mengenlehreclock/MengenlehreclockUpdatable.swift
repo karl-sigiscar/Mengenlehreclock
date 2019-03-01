@@ -12,7 +12,7 @@ import Foundation
 protocol MengenlehreclockUpdatable {
     
     func updateClockWith(isSecondsLampOn:Bool,
-                         minutesRowIndex:Int,
+                         fiveMinutesRowIndex:Int,
                          singleMinutesRowIndex:Int,
                          fiveHoursRowIndex:Int,
                          singleHoursRowIndex:Int);

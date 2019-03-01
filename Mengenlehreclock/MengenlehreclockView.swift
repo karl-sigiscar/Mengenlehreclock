@@ -25,7 +25,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     private var separatorColor:UIColor! = UIColor.black
 
     var isSecondsLampOn:Bool!
-    var minutesRowIndex:Int!
+    var fiveMinutesRowIndex:Int!
     var singleMinutesRowIndex:Int!
     var fiveHoursRowIndex:Int!
     var singleHoursRowIndex:Int!
@@ -38,21 +38,18 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     }
     
     func updateClockWith(isSecondsLampOn:Bool,
-                         minutesRowIndex:Int,
+                         fiveMinutesRowIndex:Int,
                          singleMinutesRowIndex:Int,
                          fiveHoursRowIndex:Int,
                          singleHoursRowIndex:Int) {
  
         self.isSecondsLampOn = isSecondsLampOn
-        self.minutesRowIndex = minutesRowIndex
+        self.fiveMinutesRowIndex = fiveMinutesRowIndex
         self.singleMinutesRowIndex = singleMinutesRowIndex
         self.fiveHoursRowIndex = fiveHoursRowIndex
         self.singleHoursRowIndex = singleHoursRowIndex
         
         setNeedsDisplay()
-    }
-    
-    override func prepareForInterfaceBuilder() {
     }
     
     override func draw(_ rect: CGRect) {
@@ -105,58 +102,133 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         context.drawRadialGradient(gradient, startCenter: startPoint, startRadius: 0, endCenter: endPoint, endRadius: RADIUS, options: [])
     }
     
-    
-    private func drawFiveHoursRow(in context:CGContext) {
-        
-        let RADIUS:CGFloat = bounds.width / 4
-        let WIDTH:CGFloat = ((bounds.width - (GAP * 5)) / 4)
-        let HEIGHT:CGFloat = bounds.height / 12
-        
+    private func drawTimeChips(width: CGFloat,
+                               height: CGFloat,
+                               y:CGFloat,
+                               innerGap:CGFloat,
+                               outerGap:CGFloat,
+                               normalColor:CGColor,
+                               highlightColor:CGColor,
+                               numberOfChips:Int,
+                               context: CGContext,
+                               index:Int) {
         var colors:[CGColor]
+        
+        for i in 0..<numberOfChips {
 
-        guard fiveHoursRowIndex != nil  else {
-            return
-        }
-
-        for i in 0...3 {
-            
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             let colorLocations: [CGFloat] = [0.0, 1.0]
-            
+
             let gradient:CGGradient
-            
+
             // Highlight
-            
+
             colors = [hoursHighlightedStartColor.cgColor, hoursHighlightedEndColor.cgColor]
             gradient = CGGradient(colorsSpace: colorSpace,
                                   colors: colors as CFArray,
                                   locations: colorLocations)!
-        
-            let rect = CGRect(x: GAP + CGFloat(i) * (WIDTH + GAP), y: RADIUS * 2 + GAP * 2, width: WIDTH, height: HEIGHT)
+
+            let rect = CGRect(x: outerGap + CGFloat(i) * (width + innerGap), y: y, width: width, height: height)
             let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 10)
-        
-            if i <= fiveHoursRowIndex {
-                context.setFillColor(UIColor.red.cgColor)
+
+            if i <= index {
+                context.setFillColor(highlightColor)
             }
             else {
-                context.setFillColor(UIColor.brown.cgColor)
+                context.setFillColor(normalColor)
             }
-            
+
             path.fill()
-                
-//                let startPoint = CGPoint(x: CGFloat(i) * WIDTH, y: RADIUS * 2 + GAP)
-//                let endPoint = CGPoint(x: CGFloat(i) * WIDTH, y: RADIUS * 2 + GAP + HEIGHT)
-//                context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
         }
+    }
+
+    private func drawFiveHoursRow(in context:CGContext) {
+        
+        let NUMBER_OF_CHIPS = 4
+        let WIDTH:CGFloat = ((bounds.width - (GAP * (CGFloat(NUMBER_OF_CHIPS) + 1))) / CGFloat(NUMBER_OF_CHIPS))
+        let HEIGHT:CGFloat = bounds.height / 12
+        
+        guard fiveHoursRowIndex != nil  else {
+            return
+        }
+        
+        drawTimeChips(width: WIDTH,
+                      height: HEIGHT,
+                      y:300,
+                      innerGap: GAP,
+                      outerGap: GAP,
+                      normalColor:UIColor.orange.cgColor,
+                      highlightColor:UIColor.red.cgColor,
+                      numberOfChips:NUMBER_OF_CHIPS,
+                      context: context,
+                      index:fiveHoursRowIndex)
     }
     
     private func drawSingleHoursRow(in context:CGContext) {
+        
+        let NUMBER_OF_CHIPS = 4
+        let WIDTH:CGFloat = ((bounds.width - (GAP * (CGFloat(NUMBER_OF_CHIPS) + 1))) / CGFloat(NUMBER_OF_CHIPS))
+        let HEIGHT:CGFloat = bounds.height / 12
+
+        guard singleHoursRowIndex != nil  else {
+            return
+        }
+        
+        drawTimeChips(width: WIDTH,
+                      height: HEIGHT,
+                      y:400,
+                      innerGap: GAP,
+                      outerGap: GAP,
+                      normalColor:UIColor.orange.cgColor,
+                      highlightColor:UIColor.red.cgColor,
+                      numberOfChips:NUMBER_OF_CHIPS,
+                      context: context,
+                      index:singleHoursRowIndex)
     }
 
     private func drawFiveMinutesRow(in context:CGContext) {
+        
+        let NUMBER_OF_CHIPS = 11
+        let SMALL_GAP:CGFloat = GAP / 2
+        let WIDTH:CGFloat = ((bounds.width - 2 * GAP - (SMALL_GAP * (CGFloat(NUMBER_OF_CHIPS) - 1))) / CGFloat(NUMBER_OF_CHIPS))
+        let HEIGHT:CGFloat = bounds.height / 12
+        
+        guard fiveMinutesRowIndex != nil  else {
+            return
+        }
+        
+        drawTimeChips(width: WIDTH,
+                      height: HEIGHT,
+                      y:500,
+                      innerGap: SMALL_GAP,
+                      outerGap: GAP,
+                      normalColor:UIColor.brown.cgColor,
+                      highlightColor:UIColor.yellow.cgColor,
+                      numberOfChips:NUMBER_OF_CHIPS,
+                      context: context,
+                      index:fiveMinutesRowIndex)
     }
     
     private func drawSingleMinutesRow(in context:CGContext) {
+        
+        let NUMBER_OF_CHIPS = 4
+        let WIDTH:CGFloat = ((bounds.width - (GAP * (CGFloat(NUMBER_OF_CHIPS) + 1))) / CGFloat(NUMBER_OF_CHIPS))
+        let HEIGHT:CGFloat = bounds.height / 12
+
+        guard singleMinutesRowIndex != nil  else {
+            return
+        }
+        
+        drawTimeChips(width: WIDTH,
+                      height: HEIGHT,
+                      y:600,
+                      innerGap: GAP,
+                      outerGap: GAP,
+                      normalColor:UIColor.brown.cgColor,
+                      highlightColor:UIColor.yellow.cgColor,
+                      numberOfChips:NUMBER_OF_CHIPS,
+                      context: context,
+                      index:singleMinutesRowIndex)
     }
     
     private func drawSeparators(in context:CGContext) {
