@@ -24,18 +24,15 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     private var hoursHighlightedEndColor:UIColor! =  UIColor(red: 1, green: 0.5, blue: 0.2, alpha: 1)
     private var separatorColor:UIColor! = UIColor.black
 
-    var isSecondsLampOn:Bool!
-    var fiveMinutesRowIndex:Int!
-    var singleMinutesRowIndex:Int!
-    var fiveHoursRowIndex:Int!
-    var singleHoursRowIndex:Int!
+    private var isSecondsLampOn:Bool!
+    private var fiveMinutesRowIndex:Int!
+    private var singleMinutesRowIndex:Int!
+    private var fiveHoursRowIndex:Int!
+    private var singleHoursRowIndex:Int!
     
-    var centerX:CGFloat!
-    var centerY:CGFloat!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    private var centerX:CGFloat!
+    private var centerY:CGFloat!
+    private var rowHeight:CGFloat!
     
     func updateClockWith(isSecondsLampOn:Bool,
                          fiveMinutesRowIndex:Int,
@@ -54,6 +51,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
     
     override func draw(_ rect: CGRect) {
         
+        
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
@@ -62,13 +60,14 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         
         centerX = rect.width / 2
         centerY = rect.height / 2
+        rowHeight = rect.size.height / 10
         
         drawSecondsLamp(in: context)
         drawFiveHoursRow(in: context)
         drawSingleHoursRow(in: context)
         drawFiveMinutesRow(in: context)
         drawSingleMinutesRow(in: context)
-        drawSeparators(in: context)
+        drawBackground(in: context)
         
         super.draw(rect)
     }
@@ -112,21 +111,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                                numberOfChips:Int,
                                context: CGContext,
                                index:Int) {
-        var colors:[CGColor]
         
         for i in 0..<numberOfChips {
-
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let colorLocations: [CGFloat] = [0.0, 1.0]
-
-            let gradient:CGGradient
-
-            // Highlight
-
-            colors = [hoursHighlightedStartColor.cgColor, hoursHighlightedEndColor.cgColor]
-            gradient = CGGradient(colorsSpace: colorSpace,
-                                  colors: colors as CFArray,
-                                  locations: colorLocations)!
 
             let rect = CGRect(x: outerGap + CGFloat(i) * (width + innerGap), y: y, width: width, height: height)
             let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 10)
@@ -154,7 +140,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         
         drawTimeChips(width: WIDTH,
                       height: HEIGHT,
-                      y:300,
+                      y:centerY - rowHeight,
                       innerGap: GAP,
                       outerGap: GAP,
                       normalColor:UIColor.orange.cgColor,
@@ -176,7 +162,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         
         drawTimeChips(width: WIDTH,
                       height: HEIGHT,
-                      y:400,
+                      y:centerY,
                       innerGap: GAP,
                       outerGap: GAP,
                       normalColor:UIColor.orange.cgColor,
@@ -199,7 +185,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         
         drawTimeChips(width: WIDTH,
                       height: HEIGHT,
-                      y:500,
+                      y:centerY + rowHeight,
                       innerGap: SMALL_GAP,
                       outerGap: GAP,
                       normalColor:UIColor.brown.cgColor,
@@ -221,7 +207,7 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
         
         drawTimeChips(width: WIDTH,
                       height: HEIGHT,
-                      y:600,
+                      y:centerY + rowHeight * 2,
                       innerGap: GAP,
                       outerGap: GAP,
                       normalColor:UIColor.brown.cgColor,
@@ -231,6 +217,6 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                       index:singleMinutesRowIndex)
     }
     
-    private func drawSeparators(in context:CGContext) {
+    private func drawBackground(in context:CGContext) {
     }
 }
