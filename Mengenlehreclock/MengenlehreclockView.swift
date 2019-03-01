@@ -108,6 +108,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                                outerGap:CGFloat,
                                normalColor:CGColor,
                                highlightColor:CGColor,
+                               secondColorNormal:CGColor!,
+                               secondHighlightColor:CGColor!,
                                numberOfChips:Int,
                                context: CGContext,
                                index:Int) {
@@ -117,13 +119,35 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
             let rect = CGRect(x: outerGap + CGFloat(i) * (width + innerGap), y: y, width: width, height: height)
             let path = UIBezierPath.init(roundedRect: rect, cornerRadius: 6)
 
-            if i <= index {
-                context.setFillColor(highlightColor)
+            let isFiveMinutesRow:Bool = numberOfChips > 4
+            
+            if isFiveMinutesRow {
+                let isEveryThirdRow = ((i+1) % 3 == 0)
+                if isEveryThirdRow {
+                    if i <= index {
+                        context.setFillColor(secondHighlightColor)
+                    }
+                    else {
+                        context.setFillColor(secondColorNormal)
+                    }
+                } else {
+                    if i <= index {
+                        context.setFillColor(highlightColor)
+                    }
+                    else {
+                        context.setFillColor(normalColor)
+                    }
+                }
             }
             else {
-                context.setFillColor(normalColor)
+                if i <= index {
+                    context.setFillColor(highlightColor)
+                }
+                else {
+                    context.setFillColor(normalColor)
+                }
             }
-
+            
             path.fill()
         }
     }
@@ -145,6 +169,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                       outerGap: GAP,
                       normalColor:UIColor.orange.cgColor,
                       highlightColor:UIColor.red.cgColor,
+                      secondColorNormal:nil,
+                      secondHighlightColor:nil,
                       numberOfChips:NUMBER_OF_CHIPS,
                       context: context,
                       index:fiveHoursRowIndex)
@@ -167,6 +193,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                       outerGap: GAP,
                       normalColor:UIColor.orange.cgColor,
                       highlightColor:UIColor.red.cgColor,
+                      secondColorNormal:nil,
+                      secondHighlightColor:nil,
                       numberOfChips:NUMBER_OF_CHIPS,
                       context: context,
                       index:singleHoursRowIndex)
@@ -190,6 +218,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                       outerGap: GAP,
                       normalColor:UIColor.brown.cgColor,
                       highlightColor:UIColor.yellow.cgColor,
+                      secondColorNormal:UIColor.orange.cgColor,
+                      secondHighlightColor:UIColor.red.cgColor,
                       numberOfChips:NUMBER_OF_CHIPS,
                       context: context,
                       index:fiveMinutesRowIndex)
@@ -212,6 +242,8 @@ class MengenlehreclockView: UIView, MengenlehreclockUpdatable {
                       outerGap: GAP,
                       normalColor:UIColor.brown.cgColor,
                       highlightColor:UIColor.yellow.cgColor,
+                      secondColorNormal:nil,
+                      secondHighlightColor:nil,
                       numberOfChips:NUMBER_OF_CHIPS,
                       context: context,
                       index:singleMinutesRowIndex)
